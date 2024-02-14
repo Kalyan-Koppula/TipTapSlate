@@ -1,24 +1,12 @@
-import React, { createContext, useReducer } from 'react'
-import styles from './styles.scss'
-import Input from '../Input'
-import {AppContext, AppContextDispatch, appReducer, initialTasks} from '@src/context/AppContext'
-import ToDoList from '../ToDoList'
-
+import React from "react";
+import styles from "./styles.scss";
 
 const App = () => {
-
-  const [tasks, dispatch] = useReducer(appReducer, initialTasks);
-  
   return (
-    <AppContext.Provider value={tasks}>
-      <AppContextDispatch.Provider value={dispatch}>
-        <div className={styles.appContainer}>
-          <Input/>
-          <ToDoList/>
-        </div>
-      </AppContextDispatch.Provider>
-    </AppContext.Provider>
-  )
-}
+    <div className={styles.appContainer}>
+      <h1>Welcome to simple react starter app.</h1>
+    </div>
+  );
+};
 
-export default App
+export default App;

@@ -1,7 +1,14 @@
-.appContainer{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    input{
-        font-size: 16px;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.appContainer {
+  display: grid;
+  place-items: center;
+  font-family: "Courier New", Courier, monospace;
+  color: $primary-color;
+  height: 100vh;
+  font-size: $S1;
 }

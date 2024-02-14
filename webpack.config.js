@@ -1,15 +1,15 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const path = require('path');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  mode: "development",
+  entry: "./src/index.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -17,9 +17,9 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
+            presets: ["@babel/preset-react", "@babel/preset-env"],
           },
         },
       },
@@ -28,53 +28,51 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
-                mode: 'local',
-                localIdentName: '[local]',
-              }
+                mode: "local",
+                localIdentName: "[local]",
+              },
             },
           },
-          'sass-loader',
+          "sass-loader",
           {
-            loader: './src/client/customLoaders/inject-global-sass.js'
+            loader: "./src/client/customLoaders/inject-global-sass.js",
           },
         ],
       },
       {
         test: /\.(png|svg|jpg|gif|pdf)$/,
-        use: [
-          'file-loader'
-        ]
-      }
+        use: ["file-loader"],
+      },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles.css',
+      filename: "styles.css",
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
     new CopyPlugin({
       patterns: [
         {
           from: "./public/favicon.png",
-        }
-      ]
+        },
+      ],
     }),
     new CleanWebpackPlugin(),
   ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
     modules: [
-      path.resolve(__dirname, 'src', 'client', 'components'),
-      'node_modules',
+      path.resolve(__dirname, "src", "client", "components"),
+      "node_modules",
     ],
     alias: {
-      '@src': path.resolve(__dirname, 'src', 'client'),
-    }
+      "@src": path.resolve(__dirname, "src", "client"),
+    },
   },
-  devtool: 'source-map',
+  devtool: "source-map",
 };
