@@ -5,10 +5,10 @@
 }
 
 .appContainer {
-  display: grid;
-  place-items: center;
+  padding: 30px 30px 0; 
   font-family: "Courier New", Courier, monospace;
-  color: $primary-color;
-  height: 100vh;
-  font-size: $S1;
+  color: $font-color-primary;
+  height: fit-content;
+  min-height: 100vh;
+  background-color: $background-gray;
 }
